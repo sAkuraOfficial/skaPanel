@@ -67,6 +67,8 @@ if(LV_USE_FFMPEG)
     list(APPEND PKG_CONFIG_INC ${ALSA_INCLUDE_DIRS})
 endif()
 
+add_subdirectory(3rd/cpr)
+
 file(GLOB LV_LINUX_SRC src/lib/*.c)
 set(LV_LINUX_INC src/lib)
 
@@ -85,7 +87,9 @@ target_include_directories(lvgl_linux PUBLIC
 target_link_libraries(lvgl PUBLIC ${PKG_CONFIG_LIB} m pthread)
 
 add_executable(lvglsim src/main.cpp  ${LV_LINUX_SRC} ${LV_LINUX_BACKEND_SRC})
-target_link_libraries(lvglsim lvgl_linux lvgl )
+# target_link_libraries(lvglsim lvgl_linux lvgl )
+target_link_libraries(lvglsim PRIVATE lvgl_linux lvgl cpr::cpr)
+
 
 if (CONFIG_LV_USE_DRAW_G2D)
     target_link_libraries(lvglsim g2d)
