@@ -56,7 +56,7 @@ class Base
             // execlp 会在系统的 PATH 中查找命令
             execlp("rpicam-vid", "rpicam-vid", "-t", "0",
                    "-n",                                     // 无预览窗口
-                   "--width", "1920", "--height", "1080",    // 设置分辨率
+                   "--width", "1080", "--height", "1080",    // 设置分辨率
                    "--profile", "baseline", "--intra", "10", // 设置 I 帧间隔
                    "--framerate", "30",                      // 设置帧率
                    "--rotation", "180",                      // 旋转摄像头图像
