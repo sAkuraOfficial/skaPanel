@@ -4,3 +4,6 @@
 [submodule "3rd/cpr"]
 	path = 3rd/cpr
 	url = https://github.com/libcpr/cpr
+[submodule "3rd/json"]
+	path = 3rd/json
+	url = https://github.com/nlohmann/json
