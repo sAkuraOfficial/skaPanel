@@ -20,12 +20,12 @@
 
 // 添加文件资源管理器相关头文件
 
-#include "main.hpp"
-#include "src/base/base.hpp"
 #include "components/welcome/welcome.h"
 #include "lvgl/src/libs/ffmpeg/lv_ffmpeg.h"
+#include "main.hpp"
 #include "src/backend/driver_backends.h"
 #include "src/backend/simulator_util.h"
+#include "src/base/base.hpp"
 #include <BaiduFaceID/BaiduFaceID.h>
 Base &base = Base::instance();
 
@@ -34,11 +34,11 @@ int main()
     // --- LVGL 初始化 ---
     // 设置推流链接
     // printf("等待摄像头推流启动...\n");
-    // base.set_camera_stream_url("udp://224.1.1.1:8988");
-    // base.register_atexit(); // 注册退出时清理摄像头推流
-    // base.start_camera_stream_impl();
-    // sleep(2);
-    // printf("摄像头推流已启动，URL: %s\n", base.get_camera_stream_url().c_str());
+    base.set_camera_stream_url("udp://224.1.1.1:8988");
+    base.register_atexit(); // 注册退出时清理摄像头推流
+    base.start_camera_stream_impl();
+    sleep(2);
+    printf("摄像头推流已启动，URL: %s\n", base.get_camera_stream_url().c_str());
     base.face_service = new BaiduFaceID("TOKEN", "TOKEN");
 
     lv_init();
@@ -60,6 +60,14 @@ int main()
     lv_coord_t screen_width = lv_obj_get_width(lv_screen_active());
     lv_coord_t screen_height = lv_obj_get_height(lv_screen_active());
     lv_obj_clear_flag(lv_screen_active(), LV_OBJ_FLAG_SCROLLABLE);
+
+    // lv_obj_t *player = lv_ffmpeg_player_create(lv_screen_active());
+    // // 设置尺寸
+    // lv_obj_set_size(player, 2160, 1440);
+    // lv_ffmpeg_player_set_src(player, "./assets/calling20221009.mp4");
+    // lv_ffmpeg_player_set_auto_restart(player, true);
+    // lv_ffmpeg_player_set_cmd(player, LV_FFMPEG_PLAYER_CMD_START);
+    // lv_obj_center(player);
 
     welcome();
 

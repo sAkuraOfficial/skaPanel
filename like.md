@@ -192,3 +192,34 @@ static void tabview_event_cb(lv_event_t *e)
     }
 
 ```
+
+## 社交账号按钮
+
+```cpp
+        btn_qq_login = lv_btn_create(quick_login_container);                    // 创建按钮
+        btn_qq_login_img = lv_img_create(btn_qq_login);                         // 创建按钮图标
+        lv_img_set_src(btn_qq_login_img, "./assets/icon/qq.png");               // 设置
+        lv_obj_set_size(btn_qq_login_img, 60, 60);                              // 设置图标大小
+        lv_image_set_inner_align(btn_qq_login_img, LV_IMAGE_ALIGN_CONTAIN);     // 开启图片自适应缩放
+        lv_obj_center(btn_qq_login_img);                                        // 图标居中
+        lv_obj_set_size(btn_qq_login, 60, 60);                                  // 设置宽高相等
+        lv_obj_set_style_radius(btn_qq_login, LV_RADIUS_CIRCLE, 0);             // 设置圆角为最大
+        lv_obj_set_style_bg_opa(btn_qq_login, LV_OPA_0, 0);                     // 背景透明，此处不要使用set_obj_no_bg_no_border，会导致边框看不到
+        lv_obj_set_style_border_opa(btn_qq_login, 200, 0);                      // 边框不透明
+        lv_obj_set_style_border_color(btn_qq_login, lv_color_hex(0xbfc3c7), 0); // 设置边框颜色
+        lv_obj_set_style_border_width(btn_qq_login, 4, 0);                      // 设置边框宽度
+        lv_obj_center(btn_qq_login);                                            // 居中（可选）
+
+```
+
+## 动态壁纸
+
+```cpp
+    lv_obj_t *player = lv_ffmpeg_player_create(lv_screen_active());
+    // 设置尺寸
+    lv_obj_set_size(player, 2160, 1440);
+    lv_ffmpeg_player_set_src(player, "./assets/calling20221009.mp4");
+    lv_ffmpeg_player_set_auto_restart(player, true);
+    lv_ffmpeg_player_set_cmd(player, LV_FFMPEG_PLAYER_CMD_START);
+    lv_obj_center(player);
+```

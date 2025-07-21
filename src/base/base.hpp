@@ -49,10 +49,20 @@ class Base
     // 获取指定字号的字体对象，如果没有则创建
     lv_font_t *getFont(int size);
 
+    inline void setFontToObj(lv_obj_t *obj, int size)
+    {
+        if (!obj)
+            return;
+        lv_font_t *font = getFont(size);
+        if (font)
+        {
+            lv_obj_set_style_text_font(obj, font, 0);
+        }
+    }
+
     // 可选：释放所有字体对象（如果需要手动释放）
     void clearFonts();
 };
-
 
 // 函数实现
 static void mask_corner_side(lv_obj_t *parent, bool mask_left_side)
@@ -63,9 +73,53 @@ static void mask_corner_side(lv_obj_t *parent, bool mask_left_side)
     lv_obj_remove_style_all(mask_rect);
     lv_obj_set_style_border_width(mask_rect, 15, 0);
     lv_obj_set_style_border_color(mask_rect, lv_obj_get_style_bg_color(parent, 0), 0);
-    if (mask_left_side) {
+    if (mask_left_side)
+    {
         lv_obj_set_style_border_side(mask_rect, LV_BORDER_SIDE_LEFT, 0);
-    } else {
+    }
+    else
+    {
         lv_obj_set_style_border_side(mask_rect, LV_BORDER_SIDE_RIGHT, 0);
     }
+}
+
+static void set_obj_no_bg_no_border(lv_obj_t *obj)
+{
+    lv_obj_set_style_bg_opa(obj, LV_OPA_TRANSP, 0);     // 背景透明
+    lv_obj_set_style_border_opa(obj, LV_OPA_TRANSP, 0); // 边框透明
+    lv_obj_set_style_radius(obj, 0, 0);                 // 无圆角
+    lv_obj_set_style_shadow_width(obj, 0, 0);           // 无阴影
+}
+
+/**
+ * 创建圆形社交登录按钮
+ * @param parent 父容器
+ * @param icon_path 图标路径
+ * @param size 按钮大小
+ * @param border_color 边框颜色（16进制）
+ * @param border_width 边框宽度
+ * @param border_opa 边框透明度
+ * @return 返回创建的按钮对象
+ */
+static lv_obj_t *create_social_login_button(lv_obj_t *parent, const char *icon_path, int32_t size = 45, uint32_t border_color = 0xbfc3c7, int32_t border_width = 4, lv_opa_t border_opa = 200)
+{
+    // 创建按钮
+    lv_obj_t *btn = lv_btn_create(parent);
+
+    // 创建按钮图标
+    lv_obj_t *img = lv_img_create(btn);
+    lv_img_set_src(img, icon_path);                        // 设置图标路径
+    lv_obj_set_size(img, size-10, size-10);                      // 设置图标大小
+    lv_image_set_inner_align(img, LV_IMAGE_ALIGN_CONTAIN); // 开启图片自适应缩放
+    lv_obj_center(img);                                    // 图标居中
+
+    // 设置按钮样式
+    lv_obj_set_size(btn, size, size);                                  // 设置宽高相等
+    lv_obj_set_style_radius(btn, LV_RADIUS_CIRCLE, 0);                 // 设置圆角为最大
+    lv_obj_set_style_bg_opa(btn, LV_OPA_0, 0);                         // 背景透明
+    lv_obj_set_style_border_opa(btn, border_opa, 0);                   // 边框透明度
+    lv_obj_set_style_border_color(btn, lv_color_hex(border_color), 0); // 设置边框颜色
+    lv_obj_set_style_border_width(btn, border_width, 0);               // 设置边框宽度
+
+    return btn;
 }

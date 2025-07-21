@@ -136,3 +136,11 @@ install(TARGETS lvgl_linux
 )
 
 add_custom_target(run COMMAND ${EXECUTABLE_OUTPUT_PATH}/lvglsim DEPENDS lvglsim)
+
+# 添加自定义命令，在编译完成后复制assets文件夹
+add_custom_command(TARGET lvglsim POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/src/assets
+    ${CMAKE_BINARY_DIR}/bin/assets
+    COMMENT "Copying assets folder to binary directory"
+)

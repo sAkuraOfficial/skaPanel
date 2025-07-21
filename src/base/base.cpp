@@ -32,9 +32,9 @@ void Base::start_camera_stream_impl()
         // execlp 会在系统的 PATH 中查找命令
         execlp("rpicam-vid", "rpicam-vid", "-t", "0",
                "-n",                                    // 无预览窗口
-               "--width", "1080", "--height", "1080",   // 设置分辨率
+               "--width", "790", "--height", "680",   // 设置分辨率
                "--profile", "baseline", "--intra", "1", // 设置 I 帧间隔
-               "--framerate", "30",                     // 设置帧率
+               "--framerate", "60",                     // 设置帧率
                "--rotation", "180",                     // 旋转摄像头图像
                "--low-latency",                         // 低延迟模式
                "--inline",                              // 内联 pps/sps
@@ -136,7 +136,8 @@ lv_font_t *Base::getFont(int size)
 
     // 判断字体有没有，没有则新建
     lv_font_t *font = lv_freetype_font_create(
-        "/home/zhouzihao/fonts/SOURCEHANSANSCN-NORMAL.TTF", // 字体文件路径
+        // "/home/zhouzihao/fonts/SOURCEHANSANSCN-NORMAL.TTF", // 字体文件路径
+        "/home/zhouzihao/fonts/genshin.ttf", // 字体文件路径
         LV_FREETYPE_FONT_RENDER_MODE_BITMAP,
         size,
         LV_FREETYPE_FONT_STYLE_NORMAL

@@ -303,7 +303,8 @@
     /** 设置绘制单元的数量。
      *  - > 1 需要在 `LV_USE_OS` 中启用操作系统。
      *  - > 1 意味着多个线程将并行渲染屏幕。 */
-    #define LV_DRAW_SW_DRAW_UNIT_CNT    4
+    //多线程!!
+    #define LV_DRAW_SW_DRAW_UNIT_CNT    8
 
     /** Use Arm-2D to accelerate software (sw) rendering. */
     /** 使用 Arm-2D 加速软件 (sw) 渲染。 */
@@ -1476,7 +1477,8 @@
      *  - Requires `LV_USE_SYSMON = 1` */
     /** 1: 显示 CPU 使用率和 FPS 计数。
      *  - 需要 `LV_USE_SYSMON = 1` */
-    #define LV_USE_PERF_MONITOR 1
+    //显示fps,右下角!
+    #define LV_USE_PERF_MONITOR 0
     #if LV_USE_PERF_MONITOR
         #define LV_USE_PERF_MONITOR_POS LV_ALIGN_BOTTOM_RIGHT
 
