@@ -30,4 +30,13 @@ extern lot btn_github_login_img;  // 哔哩哔哩登录
 extern lot camera_container; // 摄像头容器
 extern lot ffmpeg_player;    // FFmpeg 播放器对象
 
+// extern lot face_id_animation_container; // 人脸识别动画容器
+extern lot face_id_animation; // 人脸识别动画对象
+
+extern lot btn_face_id_try_again; // 人脸识别失败重试按钮
+extern lot btn_face_id_try_again_label; // 人脸识别失败重试按钮的文本
+
+extern lot label_say_hello_to_user; // 欢迎用户的标签
+
+
 void welcome();

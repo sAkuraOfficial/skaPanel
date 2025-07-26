@@ -1,5 +1,6 @@
 // MySingleton.hpp
 #pragma once
+#include "./user.hpp"
 #include <BaiduFaceID/BaiduFaceID.h>
 #include <functional>
 #include <lvgl.h>
@@ -7,7 +8,6 @@
 #include <sys/wait.h>
 #include <thread>
 #include <unordered_map>
-
 #define lot lv_obj_t *
 
 class Base
@@ -36,6 +36,7 @@ class Base
     //----------------------公开函数----------------------
   public:
     BaiduFaceID *face_service = nullptr;
+    User *user_service = nullptr; // 用户服务
     void register_atexit();
     void start_camera_stream_impl();
     void stop_camera_stream_impl();
@@ -109,7 +110,7 @@ static lv_obj_t *create_social_login_button(lv_obj_t *parent, const char *icon_p
     // 创建按钮图标
     lv_obj_t *img = lv_img_create(btn);
     lv_img_set_src(img, icon_path);                        // 设置图标路径
-    lv_obj_set_size(img, size-10, size-10);                      // 设置图标大小
+    lv_obj_set_size(img, size - 10, size - 10);            // 设置图标大小
     lv_image_set_inner_align(img, LV_IMAGE_ALIGN_CONTAIN); // 开启图片自适应缩放
     lv_obj_center(img);                                    // 图标居中
 

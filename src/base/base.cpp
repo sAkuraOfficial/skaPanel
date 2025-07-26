@@ -32,14 +32,14 @@ void Base::start_camera_stream_impl()
         // execlp 会在系统的 PATH 中查找命令
         execlp("rpicam-vid", "rpicam-vid", "-t", "0",
                "-n",                                    // 无预览窗口
-               "--width", "790", "--height", "680",   // 设置分辨率
+               "--width", "790", "--height", "680",     // 设置分辨率
                "--profile", "baseline", "--intra", "1", // 设置 I 帧间隔
                "--framerate", "60",                     // 设置帧率
                "--rotation", "180",                     // 旋转摄像头图像
                "--low-latency",                         // 低延迟模式
                "--inline",                              // 内联 pps/sps
                "--listen",                              // 监听 TCP 连接
-               "--ev", "0.7",                           // 曝光值
+               "--ev", "3.0",                           // 曝光值
                "--verbose", "0",                        // 日志关闭
                "--libav-format", "mpegts",              // 使用 MPEG-TS 格式
                "-o", camera_stream_url.c_str(),

@@ -1106,7 +1106,7 @@
 
 #define LV_USE_LIST       1
 
-#define LV_USE_LOTTIE     0
+#define LV_USE_LOTTIE     1
 
 #define LV_USE_MENU       1
 
@@ -1392,17 +1392,17 @@
 
 /** Rlottie library */
 /** Rlottie 库 */
-#define LV_USE_RLOTTIE 0
+#define LV_USE_RLOTTIE 1
 
 /** Enable Vector Graphic APIs
  *  - Requires `LV_USE_MATRIX = 1` */
 /** 启用矢量图形 API
  *  - 需要 `LV_USE_MATRIX = 1` */
-#define LV_USE_VECTOR_GRAPHIC  0
+#define LV_USE_VECTOR_GRAPHIC  1
 
 /** Enable ThorVG (vector graphics library) from the src/libs folder */
 /** 从 src/libs 文件夹启用 ThorVG（矢量图形库） */
-#define LV_USE_THORVG_INTERNAL 0
+#define LV_USE_THORVG_INTERNAL 1
 
 /** Enable ThorVG by assuming that its installed and linked to the project */
 /** 通过假设 ThorVG 已安装并链接到项目来启用 ThorVG */

@@ -1,14 +1,4 @@
-/*
- * 
- *
- * 功能:
- * TOKEN
- * TOKEN
- * TOKEN
- *
- * TOKEN
- * TOKEN
- */
+
 
 #include <signal.h> // For kill signal constants
 #include <stdio.h>
@@ -40,7 +30,7 @@ int main()
     sleep(2);
     printf("摄像头推流已启动，URL: %s\n", base.get_camera_stream_url().c_str());
     base.face_service = new BaiduFaceID("TOKEN", "TOKEN");
-
+    base.user_service = new User();
     lv_init();
     driver_backends_register();
     /* Initialize framebuffer backend */

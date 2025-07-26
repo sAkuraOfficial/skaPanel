@@ -1,17 +1,15 @@
 #pragma once
-#include <string>
-#include <functional>
-#include <optional>
-#include <vector>
-#include <nlohmann/json.hpp>
-#include <fstream>
-#include <vector>
-#include <string>
 #include <cstdint>
+#include <fstream>
+#include <functional>
+#include <nlohmann/json.hpp>
+#include <optional>
 #include <stdexcept>
+#include <string>
+#include <vector>
 class BaiduFaceID
 {
-public:
+  public:
     BaiduFaceID(const std::string &apiKey, const std::string &secretKey);
 
     // 人脸图片用二进制（jpg/png的原始内容）传入
@@ -19,22 +17,32 @@ public:
         const std::string &userId,
         const std::vector<uint8_t> &faceImage,
         std::function<void(const std::string &userId)> onSuccess,
-        std::function<void(const std::string &errorStr)> onFailed);
+        std::function<void(const std::string &errorStr)> onFailed
+    );
 
     void login(
         const std::vector<uint8_t> &faceImage,
         std::function<void(const std::string &userId)> onSuccess,
-        std::function<void(const std::string &errorStr)> onFailed);
+        std::function<void(const std::string &errorStr)> onFailed
+    );
+
+    void login(
+        const std::string &faceImagePath,
+        std::function<void(const std::string &userId)> onSuccess,
+        std::function<void(const std::string &errorStr)> onFailed
+    );
 
     void checkIdExist(
         const std::string &userId,
-        std::function<void(bool exist)> onResult);
+        std::function<void(bool exist)> onResult
+    );
 
     void checkFaceExist(
         const std::vector<uint8_t> &faceImage,
-        std::function<void(bool exist)> onResult);
+        std::function<void(bool exist)> onResult
+    );
 
-private:
+  private:
     void fetchAccessToken();
     bool ensureTokenReady();
 
