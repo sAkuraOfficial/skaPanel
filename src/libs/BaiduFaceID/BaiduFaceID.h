@@ -1,3 +1,7 @@
+/*
+    BaiduFaceID.hpp是由sAkuraOfficial个人封装的百度人脸识别SDK
+    采取MIT开源协议，使用前请阅读LICENSE文件
+*/
 #pragma once
 #include <cstdint>
 #include <fstream>
